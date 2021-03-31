@@ -1,0 +1,59 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .idea\
+* .idea\BaiduTtsSample.iml
+* .idea\codeStyles\
+* .idea\codeStyles\Project.xml
+* .idea\encodings.xml
+* .idea\misc.xml
+* .idea\modules.xml
+* .idea\workspace.xml
+* proguard-project.txt
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => baiduTtsSample\src\main\AndroidManifest.xml
+* assets\ => baiduTtsSample\src\main\assets\
+* libs\arm64-v8a\libbd_etts.so => baiduTtsSample\src\main\jniLibs\arm64-v8a\libbd_etts.so
+* libs\arm64-v8a\libBDSpeechDecoder_V1.so => baiduTtsSample\src\main\jniLibs\arm64-v8a\libBDSpeechDecoder_V1.so
+* libs\arm64-v8a\libgnustl_shared.so => baiduTtsSample\src\main\jniLibs\arm64-v8a\libgnustl_shared.so
+* libs\armeabi-v7a\libbd_etts.so => baiduTtsSample\src\main\jniLibs\armeabi-v7a\libbd_etts.so
+* libs\armeabi-v7a\libBDSpeechDecoder_V1.so => baiduTtsSample\src\main\jniLibs\armeabi-v7a\libBDSpeechDecoder_V1.so
+* libs\armeabi-v7a\libgnustl_shared.so => baiduTtsSample\src\main\jniLibs\armeabi-v7a\libgnustl_shared.so
+* libs\armeabi\libbd_etts.so => baiduTtsSample\src\main\jniLibs\armeabi\libbd_etts.so
+* libs\armeabi\libBDSpeechDecoder_V1.so => baiduTtsSample\src\main\jniLibs\armeabi\libBDSpeechDecoder_V1.so
+* libs\armeabi\libgnustl_shared.so => baiduTtsSample\src\main\jniLibs\armeabi\libgnustl_shared.so
+* libs\com.baidu.tts_2.5.0.101.20181101_2f3f4c6.jar => baiduTtsSample\libs\com.baidu.tts_2.5.0.101.20181101_2f3f4c6.jar
+* libs\x86\libbd_etts.so => baiduTtsSample\src\main\jniLibs\x86\libbd_etts.so
+* libs\x86\libBDSpeechDecoder_V1.so => baiduTtsSample\src\main\jniLibs\x86\libBDSpeechDecoder_V1.so
+* libs\x86\libgnustl_shared.so => baiduTtsSample\src\main\jniLibs\x86\libgnustl_shared.so
+* libs\x86_64\libbd_etts.so => baiduTtsSample\src\main\jniLibs\x86_64\libbd_etts.so
+* libs\x86_64\libBDSpeechDecoder_V1.so => baiduTtsSample\src\main\jniLibs\x86_64\libBDSpeechDecoder_V1.so
+* libs\x86_64\libgnustl_shared.so => baiduTtsSample\src\main\jniLibs\x86_64\libgnustl_shared.so
+* res\ => baiduTtsSample\src\main\res\
+* src\ => baiduTtsSample\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

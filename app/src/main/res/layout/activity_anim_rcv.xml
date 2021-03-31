@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_999999"
+    android:orientation="vertical"
+    tools:context=".animlist.AnimRcvActivity">
+
+    <com.uratio.testdemo.animlist.MyRecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.uratio.testdemo.animlist.TitleShowView
+        android:id="@+id/title_show"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_title" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="84dp"
+        android:background="@color/color_000000"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="24dp"
+        android:text="标题位置"
+        android:textColor="@color/color_FFFFFF"
+        android:textSize="22dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_rcv_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="rcv添加数据" />
+
+        <Button
+            android:id="@+id/btn_rcv_remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="rcv移除数据" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_666666"
+        android:orientation="vertical"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp">
+
+        <LinearLayout
+            android:id="@+id/ll_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/shape_question_send"
+                android:src="@android:drawable/ic_btn_speak_now" />
+
+            <EditText
+                android:id="@+id/et_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/shape_question_send"
+                android:hint="请输入..."
+                android:maxLines="3"
+                android:padding="10dp"
+                android:textColor="@color/color_FFFFFF"
+                android:textColorHint="@color/color_A3_FFFFFF"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="36dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_question_send"
+                android:gravity="center"
+                android:text="发送"
+                android:textColor="@color/color_FFFFFF"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

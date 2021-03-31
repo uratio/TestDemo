@@ -1,0 +1,43 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--  比例样式  -->
+    <style name="style_rate_number_normal">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">#ff5a00</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="style_rate_percent_normal">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#ff5a00</item>
+    </style>
+
+    <style name="style_rate_number_scale">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">#ff5a00</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="style_rate_percent_scale">
+        <item name="android:textSize">9sp</item>
+        <item name="android:textColor">#ff5a00</item>
+    </style>
+
+    <!--  沉浸式状态栏  -->
+    <style name="AppTheme.FullScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="TranslucentTheme" parent="Theme.AppCompat.Light.NoActionBar" />
+
+
+</resources>

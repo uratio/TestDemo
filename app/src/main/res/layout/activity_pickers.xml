@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PickersActivity">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="CarNumber"
+        android:background="#aaa"
+        android:text="车牌"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onDateRangePicker"
+        android:background="#ccc"
+        android:text="日期范围选择"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onYearMonthDayPicker"
+        android:background="#aaa"
+        android:text="年月日选择"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onYearMonthDayTimePicker"
+        android:background="#ccc"
+        android:text="年月日时间选择"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onYearMonthPicker"
+        android:background="#aaa"
+        android:text="年月选择"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onMonthDayPicker"
+        android:background="#ccc"
+        android:text="月日选择"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onTimePicker"
+        android:background="#aaa"
+        android:text="时间选择"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onOptionPicker"
+        android:background="#ccc"
+        android:text="单项选择"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onLinkagePicker"
+        android:background="#aaa"
+        android:text="二三级联动选择"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onConstellationPicker"
+        android:background="#ccc"
+        android:text="星座选择"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onNumberPicker"
+        android:background="#aaa"
+        android:text="数字选择（如身高、体重、年龄）"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="ProvinceCityCountry"
+        android:background="#ccc"
+        android:text="省市县选择"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="ProvinceCityCountry2"
+        android:background="#aaa"
+        android:text="省市县选择2"/>
+
+</LinearLayout>

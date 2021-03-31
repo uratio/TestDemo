@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:paddingLeft="30dp"
+    android:paddingTop="15dp">
+
+    <EditText
+        android:id="@+id/et_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/btn_send"
+        android:layout_marginRight="15dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:background="@null"
+        android:text="有没有适合我的理财"
+        android:textSize="18sp"
+        android:textColor="@color/color_7B7B8C" />
+
+    <TextView
+        android:id="@+id/tv_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_question"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:text="清点以编辑"
+        android:textColor="@color/color_555368"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_question_send"
+        android:visibility="gone"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/color_FFFFFF"
+        android:textSize="20sp"
+        android:text="发送"/>
+</RelativeLayout>
