@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -162,7 +163,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClickView"
-            android:text="动画列表"/>
+            android:text="动画List"/>
+
+        <Button
+            android:id="@+id/btn_anim_rcv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="动画RCV"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_anim_load"
@@ -171,6 +186,64 @@
             android:onClick="onClickView"
             android:text="加载动画"/>
 
+        <Button
+            android:id="@+id/btn_set_focus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="模拟点击"/>
+
+        <Button
+            android:id="@+id/btn_view_stub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="ViewStub"/>
+
+        <Button
+            android:id="@+id/btn_listView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="嵌套List"/>
+
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_get_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="获取数据"/>
+
+        <Button
+            android:id="@+id/btn_xml_parse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="xml解析"/>
+
+    </LinearLayout>
+
+    <com.uratio.testdemo.view.MyEditText
+        android:id="@+id/my_edit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:padding="15dp"
+        android:text="输入的文字"/>
+
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:padding="15dp"
+        android:text="输入的文字"/>
+
+</LinearLayout>

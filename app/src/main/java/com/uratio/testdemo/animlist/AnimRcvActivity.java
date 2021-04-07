@@ -137,21 +137,6 @@ public class AnimRcvActivity extends AppCompatActivity implements AnimRcvAdapter
         animationOut = AnimationUtils.loadAnimation(this, R.anim.anim_dialog_out);
         animationIn = AnimationUtils.loadAnimation(this, R.anim.anim_dialog_in);
 
-        // 头占位 View
-        HCMessage hcMessageT = new HCMessage();
-        hcMessageT.setType(0);
-        dataRcv.add(hcMessageT);
-        // 数据
-        for (int i = 0; i < 4; i++) {
-            HCMessage hcMessage = new HCMessage();
-            hcMessage.setType(i % 2 + 1);
-            hcMessage.setContent((i + 1) + "");
-            dataRcv.add(hcMessage);
-        }
-        // 尾占位 View
-        HCMessage hcMessage = new HCMessage();
-        hcMessage.setType(4);
-        dataRcv.add(hcMessage);
         manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
         rcvAdapter = new AnimRcvAdapter(this, dataRcv, this, this);
@@ -174,9 +159,9 @@ public class AnimRcvActivity extends AppCompatActivity implements AnimRcvAdapter
         // 重写动画
         MyItemAnimator myItemAnimator = new MyItemAnimator();
 //        myItemAnimator.setAddDuration(1000);
-        myItemAnimator.setAlphaDuration(500);
+//        myItemAnimator.setAlphaDuration(500);
         myItemAnimator.setTranslationDuration(1000);
-        myItemAnimator.setRemoveDuration(1000);
+        myItemAnimator.setRemoveDuration(0);
         recyclerView.setItemAnimator(myItemAnimator);
 
         KeyboardStateListener.assistActivity(this).setOnKeyboardStateChangedListener(new KeyboardStateListener.OnKeyboardStateChangedListener() {
@@ -214,15 +199,42 @@ public class AnimRcvActivity extends AppCompatActivity implements AnimRcvAdapter
 
     public void onClickView(View view) {
         switch (view.getId()) {
+            case R.id.btn_rcv_init:
+                dataRcv.clear();
+                rcvAdapter.notifyDataSetChanged();
+                // 头占位 View
+//                HCMessage hcMessageT = new HCMessage();
+//                hcMessageT.setType(0);
+//                dataRcv.add(hcMessageT);
+//                rcvAdapter.notifyItemChanged(0);
+                // 数据
+                for (int i = 0; i < 4; i++) {
+                    HCMessage hcMessage = new HCMessage();
+                    hcMessage.setType(i % 2 + 1);
+                    hcMessage.setContent((i + 1) + "");
+                    dataRcv.add(hcMessage);
+                    rcvAdapter.notifyItemChanged(dataRcv.size());
+                }
+                // 尾占位 View
+                HCMessage hcMessage = new HCMessage();
+                hcMessage.setType(4);
+                dataRcv.add(hcMessage);
+                rcvAdapter.notifyDataSetChanged();
+                break;
             case R.id.btn_rcv_add:
-                rcvAdapter.addData();
-                rcvAdapter.addData();
-                scrollPositionToTop(dataRcv.size() - 3);
+                if (dataRcv.size() > 6) {
+                    dataRcv.clear();
+                    rcvAdapter.notifyDataSetChanged();
+                }
+                rcvAdapter.addData2();
+//                titleShow.setContent("添加的文字");
+                rcvAdapter.addData2();
+//                scrollPositionToTop(dataRcv.size() - 3);
                 break;
             case R.id.btn_rcv_remove:
-//                rcvAdapter.removeData();
-                rcvAdapter.removeData(4);
-                rcvAdapter.removeData(5);
+                rcvAdapter.removeData();
+//                rcvAdapter.removeData(4);
+//                rcvAdapter.removeData(5);
                 break;
         }
     }

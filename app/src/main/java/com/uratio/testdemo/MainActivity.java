@@ -2,6 +2,7 @@ package com.uratio.testdemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -12,25 +13,38 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.uratio.testdemo.Utils.Utils;
+import com.uratio.testdemo.animlist.AnimListActivity;
 import com.uratio.testdemo.animlist.AnimRcvActivity;
+import com.uratio.testdemo.animlist.ListViewActivity;
 import com.uratio.testdemo.designmodel.DesignModelActivity;
 import com.uratio.testdemo.hexagon.HexagonActivity;
 import com.uratio.testdemo.img.LongFigureActivity;
 import com.uratio.testdemo.load.LoadAnimActivity;
+import com.uratio.testdemo.parse.XmlParseActivity;
+import com.uratio.testdemo.view.MyEditText;
+import com.uratio.testdemo.view.ViewStubActivity;
 import com.uratio.testdemo.workmanager.WorkManagerActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = MainActivity.class.getSimpleName();
     private String msg = "提示的内容信息";
     private TextView textView;
+    private MyEditText myEditText;
+    private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +72,69 @@ public class MainActivity extends AppCompatActivity {
         list.add("strfdf");
         System.out.println("list == null：" + (list == null));
         System.out.println("list.size()=" + list.size());
+
+        myEditText = findViewById(R.id.my_edit);
+        editText = findViewById(R.id.edit_text);
+        myEditText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        Log.e(TAG, "myEditText OnTouchListener: ACTION_DOWN");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        Log.e(TAG, "myEditText OnTouchListener: ACTION_MOVE");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        Log.e(TAG, "myEditText OnTouchListener: ACTION_UP");
+                        break;
+                }
+                return false;
+            }
+        });
+        myEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e(TAG, "myEditText OnClickListener:");
+            }
+        });
+
+        myEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.e(TAG, "myEditText setOnFocusChangeListener: hasFocus=" + hasFocus);
+            }
+        });
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        Log.e(TAG, "editText OnTouchListener: ACTION_DOWN");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        Log.e(TAG, "editText OnTouchListener: ACTION_MOVE");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        Log.e(TAG, "editText OnTouchListener: ACTION_UP");
+                        break;
+                }
+                return false;
+            }
+        });
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e(TAG, "editText OnClickListener:");
+            }
+        });
+
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.e(TAG, "editText setOnFocusChangeListener: hasFocus=" + hasFocus);
+            }
+        });
     }
 
     @Override
@@ -133,7 +210,11 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(MainActivity.this, LongFigureActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.btn_anim_list://动画列表
+            case R.id.btn_anim_list://动画列表list
+                intent = new Intent(MainActivity.this, AnimListActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_anim_rcv://动画列表rcv
                 intent = new Intent(MainActivity.this, AnimRcvActivity.class);
                 startActivity(intent);
                 break;
@@ -141,9 +222,48 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(MainActivity.this, LoadAnimActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.btn_set_focus://模拟点击edittext
+                showSoftInputFromWindow(editText);
+                break;
+            case R.id.btn_view_stub:// ViewStub
+                intent = new Intent(MainActivity.this, ViewStubActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_listView:// ViewStub
+                intent = new Intent(MainActivity.this, ListViewActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_get_data:// 获取数据
+                ArrayList<String> strings = new ArrayList<>();
+                ArrayList<String> stringList = new ArrayList<>();
+                strings.add("adfasfd");
+                stringList.add(strings.get(strings.size() - 1));
+                Log.e(TAG, "onClickView: stringList=" + stringList);
+                queryTextCache.put("111", strings);
+                Log.e(TAG, "onClickView: " + queryTextCache.get("123"));
+                Log.e(TAG, "onClickView: " + queryTextCache.get("111"));
+                break;
+            case R.id.btn_xml_parse:// xml解析
+                intent = new Intent(MainActivity.this, XmlParseActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 
+    private Map<String, ArrayList<String>> queryTextCache = new HashMap<>();
+
+    /**
+     * EditText获取焦点并显示软键盘
+     */
+    private void showSoftInputFromWindow(EditText editText) {
+        editText.setFocusable(true);
+        editText.setFocusableInTouchMode(true);
+        editText.requestFocus();
+        editText.setSelection(editText.getText().length());
+        //显示软键盘
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(editText, 0);
+    }
     private int number = 0;
 
     public void setText(String text) {

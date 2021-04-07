@@ -12,7 +12,8 @@
     <com.uratio.testdemo.animlist.MyRecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_title"/>
 
     <com.uratio.testdemo.animlist.TitleShowView
         android:id="@+id/title_show"
@@ -37,6 +38,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_rcv_init"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="初始化" />
 
         <Button
             android:id="@+id/btn_rcv_add"

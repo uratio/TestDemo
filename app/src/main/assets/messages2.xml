@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message>
+    <view>
+        <type>content</type>
+        <text>我回复你的信息</text>
+        <bold>1</bold>
+        <front>18</front>
+        <textcolor>111111</textcolor>
+        <backgroundcolor>ff6d26,0.06</backgroundcolor>
+        <url>http://www.baidu.com</url>
+        <isquestion>0</isquestion>
+        <subviews>
+            <view>
+                <type>label</type>
+                <text>请在你的手机中打开对应功能权限</text>
+                <front>15</front>
+                <textcolor>111111</textcolor>
+            </view>
+
+            <view>
+                <type>horizontal</type>
+                <subviews>
+                    <view>
+                        <type>smallbtn</type>
+                        <font>13</font>
+                        <text>认证管理</text>
+                        <textcolor>ffffff</textcolor>
+                        <url>跳转认证管理的url</url>
+                        <backgroundcolor>ff6d26</backgroundcolor>
+                        <isquestion>0</isquestion>
+                    </view>
+                    <view>
+                        <type>smallbtn</type>
+                        <font>13</font>
+                        <text>转人工客服</text>
+                        <textcolor>ffffff</textcolor>
+                        <url>转人工客服的url</url>
+                        <backgroundcolor>ff6d26</backgroundcolor>
+                        <isquestion>0</isquestion>
+                    </view>
+                    <view>
+                        <type>smallbtn</type>
+                        <font>13</font>
+                        <text>查询余额</text>
+                        <textcolor>ffffff</textcolor>
+                        <url>跳转查询余额的url</url>
+                        <backgroundcolor>ff6d26</backgroundcolor>
+                        <isquestion>0</isquestion>
+                    </view>
+                </subviews>
+            </view>
+            <view>
+                <type>label</type>
+                <text>第一个label的结尾</text>
+                <front>15</front>
+                <textcolor>111111</textcolor>
+            </view>
+
+        </subviews>
+    </view>
+    <view>
+        <type>content</type>
+        <backgroundcolor>ff6d26,0.06</backgroundcolor>
+
+        <subviews>
+            <view>
+                <type>label</type>
+                <font>15</font>
+                <text>请您在手机设置中， 把手机银行APP-照相、电话等权限功能打开</text>
+                <textcolor>111111</textcolor>
+            </view>
+
+            <view>
+                <type>horizontal</type>
+                <subviews>
+                    <view>
+                        <type>smallbtn</type>
+                        <font>13</font>
+                        <text>认证管理</text>
+                        <textcolor>ffffff</textcolor>
+                        <url>跳转认证管理</url>
+                        <backgroundcolor>ff6d26</backgroundcolor>
+                        <isquestion>0</isquestion>
+                    </view>
+
+                    <view>
+                        <type>smallbtn</type>
+                        <font>13</font>
+                        <text>转人工客服</text>
+                        <textcolor>ff6d26</textcolor>
+                        <url>转人工客服</url>
+                        <isquestion>0</isquestion>
+                    </view>
+                </subviews>
+            </view>
+        </subviews>
+
+    </view>
+
+    <view>
+        <type>label</type>
+        <font>15</font>
+        <text>猜你想问</text>
+        <textcolor>111111</textcolor>
+        <bold>1</bold>
+    </view>
+
+    <view>
+        <type>link</type>
+        <font>15</font>
+        <text>如何开通认证介质？</text>
+        <textcolor>111111</textcolor>
+        <url>如何开通认证介质？  url</url>
+        <isquestion>0</isquestion>
+    </view>
+
+    <view>
+        <type>link</type>
+        <font>15</font>
+        <text>如何开通你云证通/数字证书?</text>
+        <textcolor>111111</textcolor>
+        <url>如何开通你云证通/数字证书?  url</url>
+        <isquestion>0</isquestion>
+    </view>
+
+    <view>
+        <type>link</type>
+        <font>15</font>
+        <text>如何开通短信护甲？</text>
+        <textcolor>111111</textcolor>
+        <isquestion>1</isquestion>
+    </view>
+
+    <view>
+        <type>link</type>
+        <font>15</font>
+        <text>如何开通刷脸转账？</text>
+        <textcolor>111111</textcolor>
+        <isquestion>1</isquestion>
+    </view>
+</message>

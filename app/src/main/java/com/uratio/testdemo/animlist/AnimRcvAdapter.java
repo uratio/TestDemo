@@ -110,6 +110,16 @@ public class AnimRcvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         notifyItemInserted(size);
     }
 
+    public void addData2() {
+        int size = list.size();
+        HCMessage message = new HCMessage();
+        message.setType(size % 2 + 1);
+        message.setContent((size + 1) + "");
+        list.add(size, message);
+
+        notifyItemInserted(size);
+    }
+
     public void addData(int position) {
         HCMessage message = new HCMessage();
         message.setType(position % 2);
@@ -202,7 +212,7 @@ public class AnimRcvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 }
             });
 //            tvHint.setVisibility(!message.isCanEdit() ? View.VISIBLE : View.GONE);
-            itemView.animate().setDuration(0);
+//            itemView.animate().setDuration(0);
         }
     }
 

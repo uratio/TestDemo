@@ -240,7 +240,9 @@ public class MyItemAnimator extends SimpleItemAnimator {
         final ViewPropertyAnimator animation = view.animate();
         mAddAnimations.add(holder);
         // 添加 透明度 + Y轴平移动画 ，并设置时间
-        animation.alpha(1).setDuration(alphaDuration).translationY(0).setDuration(translationDuration)
+        animation
+                .alpha(1).setDuration(alphaDuration)
+                .translationY(0).setDuration(translationDuration)
                 .setListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationStart(Animator animator) {

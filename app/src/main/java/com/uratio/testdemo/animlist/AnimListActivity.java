@@ -46,15 +46,6 @@ public class AnimListActivity extends AppCompatActivity {
          */
         listView = findViewById(R.id.listView);
 
-        for (int i = 0; i < 4; i++) {
-            HCMessage hcMessage = new HCMessage();
-            hcMessage.setType(i % 2);
-            hcMessage.setContent((i + 1) + "");
-            dataList.add(hcMessage);
-        }
-        HCMessage hcMessage1 = new HCMessage();
-        hcMessage1.setType(3);
-        dataList.add(hcMessage1);
         adapter = new AnimListAdapter(this, dataList);
         listView.setAdapter(adapter);
 
@@ -98,6 +89,19 @@ public class AnimListActivity extends AppCompatActivity {
 
     public void onClickView(View view) {
         switch (view.getId()) {
+            case R.id.btn_list_init:
+                dataList.clear();
+                for (int i = 0; i < 4; i++) {
+                    HCMessage hcMessage = new HCMessage();
+                    hcMessage.setType(i % 2);
+                    hcMessage.setContent((i + 1) + "");
+                    dataList.add(hcMessage);
+                }
+                HCMessage hcMessage1 = new HCMessage();
+                hcMessage1.setType(3);
+                dataList.add(hcMessage1);
+                adapter.notifyDataSetChanged();
+                break;
             case R.id.btn_list_add:
                 adapter.addData();
                 break;
