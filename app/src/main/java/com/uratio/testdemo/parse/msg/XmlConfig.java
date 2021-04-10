@@ -4,7 +4,7 @@ package com.uratio.testdemo.parse.msg;
  * @author lang
  * @data 2021/4/7
  */
-public class Constants {
+public class XmlConfig {
     public static class XmlKey {
         public static final String VIEW = "view";
         public static final String TYPE = "type";

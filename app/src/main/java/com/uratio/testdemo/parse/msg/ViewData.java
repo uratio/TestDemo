@@ -1,7 +1,6 @@
 package com.uratio.testdemo.parse.msg;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
 
@@ -10,27 +9,26 @@ import javax.xml.bind.annotation.XmlElement;
  * @data 2021/4/7
  */
 public class ViewData implements Serializable {
-    @XmlElement(name = Constants.XmlKey.TYPE)
+    @XmlElement(name = XmlConfig.XmlKey.TYPE)
     private String type;
-    @XmlElement(name = Constants.XmlKey.TEXT)
+    @XmlElement(name = XmlConfig.XmlKey.TEXT)
     private String text;
-    @XmlElement(name = Constants.XmlKey.BOLD)
-    private String bold;
-    @XmlElement(name = Constants.XmlKey.FRONT)
-    private String front;
-    @XmlElement(name = Constants.XmlKey.TEXT_COLOR)
+    @XmlElement(name = XmlConfig.XmlKey.BOLD)
+    private int bold;
+    @XmlElement(name = XmlConfig.XmlKey.FRONT)
+    private float front;
+    @XmlElement(name = XmlConfig.XmlKey.TEXT_COLOR)
     private String textColor;
-    @XmlElement(name = Constants.XmlKey.BACKGROUND_COLOR)
+    private float textColorAlpha;
+    @XmlElement(name = XmlConfig.XmlKey.BACKGROUND_COLOR)
     private String backgroundColor;
-    private String bgAlpha;
-    @XmlElement(name = Constants.XmlKey.URL)
+    private float bgAlpha;
+    @XmlElement(name = XmlConfig.XmlKey.URL)
     private String url;
-
-    //
-    @XmlElement(name = Constants.XmlKey.IS_QUESTION)
-    private String isQuestion;
-    @XmlElement(name = Constants.XmlKey.SUBVIEWS)
-    private List<SubviewData> subviews;
+    @XmlElement(name = XmlConfig.XmlKey.IS_QUESTION)
+    private int isQuestion;
+    @XmlElement(name = XmlConfig.XmlKey.SUBVIEWS)
+    private SubviewData subviews;
 
     public String getType() {
         return type;
@@ -48,20 +46,20 @@ public class ViewData implements Serializable {
         this.text = text;
     }
 
-    public String getBold() {
+    public int getBold() {
         return bold;
     }
 
     public void setBold(String bold) {
-        this.bold = bold;
+        this.bold = Integer.parseInt(bold);
     }
 
-    public String getFront() {
+    public float getFront() {
         return front;
     }
 
     public void setFront(String front) {
-        this.front = front;
+        this.front = Float.parseFloat(front);
     }
 
     public String getTextColor() {
@@ -69,7 +67,17 @@ public class ViewData implements Serializable {
     }
 
     public void setTextColor(String textColor) {
-        this.textColor = textColor;
+        String[] split = textColor.split(",");
+        if (split.length == 1) {
+            this.textColor = "#" + textColor;
+        } else if (split.length == 2) {
+            this.textColor = split[0];
+            this.textColorAlpha = Float.parseFloat(split[1]);
+        }
+    }
+
+    public float getTextColorAlpha() {
+        return textColorAlpha;
     }
 
     public String getBackgroundColor() {
@@ -79,11 +87,15 @@ public class ViewData implements Serializable {
     public void setBackgroundColor(String backgroundColor) {
         String[] split = backgroundColor.split(",");
         if (split.length == 1) {
-            this.backgroundColor = backgroundColor;
+            this.backgroundColor = "#" + backgroundColor;
         } else if (split.length == 2) {
             this.backgroundColor = split[0];
-            this.bgAlpha = split[1];
+            this.bgAlpha = Float.parseFloat(split[1]);
         }
+    }
+
+    public float getBgAlpha() {
+        return bgAlpha;
     }
 
     public String getUrl() {
@@ -94,19 +106,19 @@ public class ViewData implements Serializable {
         this.url = url;
     }
 
-    public String getIsQuestion() {
+    public int getIsQuestion() {
         return isQuestion;
     }
 
     public void setIsQuestion(String isQuestion) {
-        this.isQuestion = isQuestion;
+        this.isQuestion = Integer.parseInt(isQuestion);
     }
 
-    public List<SubviewData> getSubviews() {
+    public SubviewData getSubviews() {
         return subviews;
     }
 
-    public void setSubviews(List<SubviewData> subviews) {
+    public void setSubviews(SubviewData subviews) {
         this.subviews = subviews;
     }
 

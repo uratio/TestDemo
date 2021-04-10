@@ -2,7 +2,7 @@ package com.uratio.testdemo.parse;
 
 import android.util.Log;
 
-import com.uratio.testdemo.parse.msg.Constants;
+import com.uratio.testdemo.parse.msg.XmlConfig;
 import com.uratio.testdemo.parse.msg.SubviewData;
 import com.uratio.testdemo.parse.msg.ViewData;
 
@@ -16,7 +16,7 @@ public class MsgSaxHandler extends DefaultHandler {
 
     private ArrayList<ViewData> views = new ArrayList<>();
     private ViewData viewData;
-    private ArrayList<SubviewData> subviews = new ArrayList<>();
+    private SubviewData subviews = new SubviewData();
     private SubviewData subviewData;
     private String labelType;
     //声明一个字符串变量
@@ -54,10 +54,10 @@ public class MsgSaxHandler extends DefaultHandler {
         Log.e("dat", "startElement: localName=" + localName);
         Log.e("dat", "startElement: qName=" + qName);
         Log.e("dat", "startElement: attributes=" + attributes);
-        if (Constants.XmlKey.VIEW.equals(localName)) {
+        if (XmlConfig.XmlKey.VIEW.equals(localName)) {
             viewData = new ViewData();
             labelType = localName;
-        } else if (Constants.XmlKey.SUBVIEWS.equals(localName)) {
+        } else if (XmlConfig.XmlKey.SUBVIEWS.equals(localName)) {
             subviewData = new SubviewData();
             labelType = localName;
         }
@@ -73,38 +73,38 @@ public class MsgSaxHandler extends DefaultHandler {
         super.endElement(uri, localName, qName);
 
         switch (localName) {
-            case Constants.XmlKey.VIEW:
-                views.add(viewData);
-//                if (labelType.equals(Constants.XmlKey.VIEW)) {
-//                } else {
-//                    subviews.add(subviewData);
-//                }
+            case XmlConfig.XmlKey.VIEW:
+                if (labelType.equals(XmlConfig.XmlKey.VIEW)) {
+                    views.add(viewData);
+                } else {
+                    subviews.setViews(views);
+                }
                 break;
-            case Constants.XmlKey.TYPE:
+            case XmlConfig.XmlKey.TYPE:
                 viewData.setType(content);
                 break;
-            case Constants.XmlKey.TEXT:
+            case XmlConfig.XmlKey.TEXT:
                 viewData.setText(content);
                 break;
-            case Constants.XmlKey.BOLD:
+            case XmlConfig.XmlKey.BOLD:
                 viewData.setBold(content);
                 break;
-            case Constants.XmlKey.FRONT:
+            case XmlConfig.XmlKey.FRONT:
                 viewData.setFront(content);
                 break;
-            case Constants.XmlKey.TEXT_COLOR:
+            case XmlConfig.XmlKey.TEXT_COLOR:
                 viewData.setTextColor(content);
                 break;
-            case Constants.XmlKey.BACKGROUND_COLOR:
+            case XmlConfig.XmlKey.BACKGROUND_COLOR:
                 viewData.setBackgroundColor(content);
                 break;
-            case Constants.XmlKey.URL:
+            case XmlConfig.XmlKey.URL:
                 viewData.setUrl(content);
                 break;
-            case Constants.XmlKey.IS_QUESTION:
+            case XmlConfig.XmlKey.IS_QUESTION:
                 viewData.setIsQuestion(content);
                 break;
-            case Constants.XmlKey.SUBVIEWS:
+            case XmlConfig.XmlKey.SUBVIEWS:
                 viewData.setSubviews(subviews);
 
                 break;

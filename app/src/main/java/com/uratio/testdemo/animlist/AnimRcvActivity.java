@@ -226,7 +226,7 @@ public class AnimRcvActivity extends AppCompatActivity implements AnimRcvAdapter
                     dataRcv.clear();
                     rcvAdapter.notifyDataSetChanged();
                 }
-                rcvAdapter.addData2();
+                rcvAdapter.addData1();
 //                titleShow.setContent("添加的文字");
                 rcvAdapter.addData2();
 //                scrollPositionToTop(dataRcv.size() - 3);

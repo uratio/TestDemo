@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlElement;
 
 /**
  * @author lang
- * @data 2021/4/7
+ * @data 2021/4/9
  */
-public class SubviewData implements Serializable {
+public class MessageData implements Serializable {
     @XmlElement(name = XmlConfig.XmlKey.VIEW)
     private List<ViewData> views;
 
@@ -23,7 +23,7 @@ public class SubviewData implements Serializable {
 
     @Override
     public String toString() {
-        return "SubviewData{" +
+        return "MessageData{" +
                 "views=" + views +
                 '}';
     }

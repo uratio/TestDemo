@@ -13,25 +13,143 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_parse"
+            android:id="@+id/btn_pull"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClickView"
-            android:text="解析"/>
+            android:text="pull解析"/>
 
         <Button
-            android:id="@+id/btn_parse2"
+            android:id="@+id/btn_sax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClickView"
-            android:text="解析2"/>
+            android:text="Sax解析"/>
 
         <Button
-            android:id="@+id/btn_parse3"
+            android:id="@+id/btn_recursion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClickView"
-            android:text="解析3"/>
+            android:text="递归解析"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_element"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="element解析"/>
+
+        <Button
+            android:id="@+id/btn_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="其他解析"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="背景"/>
+
+        <Button
+            android:id="@+id/btn_bg2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="背景2"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="字号"/>
+
+        <Button
+            android:id="@+id/btn_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="颜色"/>
+
+        <Button
+            android:id="@+id/btn_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="加粗"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_show"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:text="符合设计费"
+        android:textSize="15sp"
+        android:textColor="@color/color_666666"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_alpha_turn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:layout_weight="1"
+            android:inputType="numberDecimal"
+            android:maxLength="5"
+            android:textSize="15sp"
+            android:textColor="@color/color_666666"
+            android:hint="透明度（0-100）"/>
+
+        <Button
+            android:id="@+id/btn_alpha_turn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="透明度 == >"/>
+
+        <TextView
+            android:id="@+id/tv_alpha_turn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:textColor="@color/color_666666"
+            android:textStyle="bold"
+            android:text=""
+            android:hint="透明度16进制结果"/>
 
     </LinearLayout>
 
