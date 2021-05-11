@@ -33,6 +33,13 @@
             android:onClick="onClickView"
             android:text="递归解析"/>
 
+        <Button
+            android:id="@+id/btn_recursion2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="递归解析2"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -74,6 +81,13 @@
             android:layout_height="wrap_content"
             android:onClick="onClickView"
             android:text="背景2"/>
+
+        <Button
+            android:id="@+id/btn_package_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickView"
+            android:text="获取包名"/>
 
     </LinearLayout>
 

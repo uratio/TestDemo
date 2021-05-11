@@ -54,6 +54,20 @@ public class SaxUtils {
         return viewData;
     }
 
+    public static List<ViewData> parseRecursion(String xmlData) {
+        try {
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            InputSource inputSource = new InputSource(new ByteArrayInputStream(xmlData.getBytes("UTF-8")));
+            Document document = db.parse(inputSource);
+            Element root = document.getDocumentElement();
+            return parseList(root);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static List<ViewData> parseRecursion(InputSource is) throws Exception {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();

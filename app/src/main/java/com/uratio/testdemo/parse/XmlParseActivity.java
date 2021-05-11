@@ -3,6 +3,8 @@ package com.uratio.testdemo.parse;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
@@ -22,6 +24,8 @@ import com.uratio.testdemo.parse.msg.ViewData;
 import org.xml.sax.InputSource;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class XmlParseActivity extends AppCompatActivity {
@@ -56,6 +60,13 @@ public class XmlParseActivity extends AppCompatActivity {
             "  \n" +
             "</beauties>";
 
+    private String xmlData3 = "<p>&lt;message&gt;</p>\n" +
+            "    <p>&lt;view&gt;</p>\n" +
+            "        <p>&lt;type&gt;label<p>&lt;/type&gt;</p>\n" +
+            "        <p>&lt;font&gt;15<p>&lt;/font&gt;</p>\n" +
+            "    <p>&lt;/view&gt;</p>\n" +
+            "<p>&lt;/message&gt;</p>";
+
     private TextView tvShow;
     private EditText etAlphaTurn;
     private TextView tvAlphaTurn;
@@ -88,6 +99,10 @@ public class XmlParseActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 break;
+            case R.id.btn_recursion2:
+                List<ViewData> viewData2 = SaxUtils.parseRecursion(translation(xmlData3));
+                Log.e("data", "打印: " + new Gson().toJson(viewData2));
+                break;
             case R.id.btn_element:
                 try {
                     SaxUtils.parseElement(new InputSource(getAssets().open("messages2.xml")));
@@ -110,6 +125,9 @@ public class XmlParseActivity extends AppCompatActivity {
             case R.id.btn_bg2:
 //                tvShow.setBackgroundColor(Color.parseColor("181D36"));
                 break;
+            case R.id.btn_package_name:
+                loadApps();
+                break;
             case R.id.btn_size:
                 tvShow.setTextSize(20);
                 break;
@@ -126,6 +144,47 @@ public class XmlParseActivity extends AppCompatActivity {
                 tvAlphaTurn.setText(turnAlpha(etAlphaTurn.getText().toString()));
                 break;
         }
+
+    }
+
+
+
+    private void loadApps() {
+        Intent intent = new Intent(Intent.ACTION_MAIN, null);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+
+        List<ResolveInfo> apps = getPackageManager().queryIntentActivities(intent, 0);
+        //排序
+        Collections.sort(apps, new Comparator<ResolveInfo>() {
+            @Override
+            public int compare(ResolveInfo a, ResolveInfo b) {
+                return String.CASE_INSENSITIVE_ORDER.compare(
+                        a.loadLabel(getPackageManager()).toString(),
+                        b.loadLabel(getPackageManager()).toString()
+                );
+            }
+        });
+        //for循环遍历ResolveInfo对象获取包名和类名
+        for (int i = 0; i < apps.size(); i++) {
+            ResolveInfo info = apps.get(i);
+            String packageName = info.activityInfo.packageName;
+            CharSequence cls = info.activityInfo.name;
+            CharSequence name = info.activityInfo.loadLabel(getPackageManager());
+            //log打印
+            Log.e("ddddddd",name+"----"+packageName+"----"+cls);
+        }
+    }
+
+    private String translation(String content) {
+        return content
+                .replace("<p>", "")
+                .replace("</p>", "")
+                .replace("&lt;", "<")
+                .replace("&gt;", ">")
+                .replace("&amp;", "&")
+                .replace("&quot;", "\"")
+                .replace("&copy;", "©")
+                ;
     }
 
     public String turnAlpha(String alpha) {

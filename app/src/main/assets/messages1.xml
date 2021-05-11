@@ -6,15 +6,4 @@
         <text>很抱歉，请您换个问法，例如：转账、理财、缴费等，您也可以输入”转人工“，我们竭诚为您服务。</text>
         <textcolor>111111</textcolor>
     </view>
-
-    <view>
-        <type>smallbtn</type>
-        <font>13</font>
-        <text>转人工客服</text>
-        <textcolor>ff6d26</textcolor>
-        <url>转人工客服</url>
-        <isquestion>0</isquestion>
-
-    </view>
-
 </message>
