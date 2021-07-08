@@ -1,3 +1,4 @@
 include ':Pikers', ':tools', ':basenet', ':YZxing-lib', ':library'
 rootProject.name='TestDemo'
 include ':app'
+include ':CommonDialog'

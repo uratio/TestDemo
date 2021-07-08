@@ -2,6 +2,7 @@ package com.uratio.testdemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -48,6 +49,8 @@ public class PickersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pickers);
+
+        ViewModelProvider provider = new ViewModelProvider(this);
     }
 
     private String provinceStr = "河北省", cityStr = "唐山市", countyStr = "开平区";

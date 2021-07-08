@@ -137,12 +137,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void reportFullyDrawn() {
-        super.reportFullyDrawn();
-        System.out.println("****************  reportFullyDrawn  ******************");
-    }
-
     public void onClickView(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -293,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
      * @param value
      * @return
      */
-    public static boolean isEmpty(String value) {
+    public boolean isEmpty(String value) {
         return null == value || "".equals(value.trim());
     }
 
