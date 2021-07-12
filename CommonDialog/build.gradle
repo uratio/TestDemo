@@ -1,5 +1,7 @@
-apply plugin: 'com.android.library'
-apply plugin: 'maven'
+//apply plugin: 'com.android.library'
+//apply plugin: 'maven'
+apply plugin: 'java-library'
+apply plugin: 'com.vanniktech.maven.publish'
 
 uploadArchives {
     repositories.mavenDeployer {
@@ -43,4 +45,10 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
+
+jar {
+    manifest {
+        attributes  'Automatic-Module-Name': 'tool.common.dialog'
+    }
 }
