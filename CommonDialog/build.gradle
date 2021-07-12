@@ -1,14 +1,18 @@
-//apply plugin: 'com.android.library'
-//apply plugin: 'maven'
-apply plugin: 'java-library'
-apply plugin: 'com.vanniktech.maven.publish'
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+//apply plugin: 'java-library'
+//apply plugin: 'com.vanniktech.maven.publish'
 
 uploadArchives {
     repositories.mavenDeployer {
-        repository(url: LOCAL_REPO_URL)
-        pom.groupId = GROUP
+        repository(
+                id: REPOSITORY_ID,
+                url: REPOSITORY_URL
+        )
+        pom.groupId = GROUP_ID
         pom.artifactId = POM_ARTIFACT_ID
-        pom.version = VERSION
+        pom.version = POM_VERSION
+        pom.name = POM_NAME
     }
 }
 
@@ -47,8 +51,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
 
-jar {
-    manifest {
-        attributes  'Automatic-Module-Name': 'tool.common.dialog'
-    }
-}
+//jar {
+//    manifest {
+//        attributes  'Automatic-Module-Name': 'tool.common.dialog'
+//    }
+//}
