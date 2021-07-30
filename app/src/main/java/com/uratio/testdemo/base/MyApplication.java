@@ -9,6 +9,9 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.uratio.testdemo.BuildConfig;
+import com.uratio.testdemo.Utils.CommonConfig;
+
 /**
  * @author lang
  * @data 2020/11/13
@@ -29,6 +32,8 @@ public class MyApplication extends Application implements Application.ActivityLi
         super.onCreate();
         System.out.println("****************  MyApplication onCreate  ******************");
         registerActivityLifecycleCallbacks(this);
+
+        CommonConfig.init(BuildConfig.DEBUG, "host_address");
 
         //Android 11 引入了此方法，用于报告近期任何进程终止的原因
         //ActivityManager.getHistoricalProcessExitReasons();

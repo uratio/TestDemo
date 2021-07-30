@@ -24,6 +24,7 @@ import com.uratio.testdemo.Utils.Utils;
 import com.uratio.testdemo.animlist.AnimListActivity;
 import com.uratio.testdemo.animlist.AnimRcvActivity;
 import com.uratio.testdemo.animlist.ListViewActivity;
+import com.uratio.testdemo.arithmetic.ArithmeticActivity;
 import com.uratio.testdemo.designmodel.DesignModelActivity;
 import com.uratio.testdemo.hexagon.HexagonActivity;
 import com.uratio.testdemo.img.LongFigureActivity;

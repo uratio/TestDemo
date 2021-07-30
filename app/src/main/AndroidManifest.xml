@@ -28,7 +28,7 @@
         <activity android:name=".animlist.AnimListActivity" />
         <activity android:name=".img.LongFigureActivity" />
         <activity android:name=".designmodel.DesignModelActivity" />
-        <activity android:name=".ArithmeticActivity" />
+        <activity android:name=".arithmetic.ArithmeticActivity" />
         <activity android:name=".workmanager.WorkManagerActivity" />
         <activity android:name=".PickersActivity" />
         <activity android:name=".hexagon.HexagonActivity" />

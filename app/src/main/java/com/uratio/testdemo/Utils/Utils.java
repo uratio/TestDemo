@@ -7,8 +7,11 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Utils {
 
@@ -164,6 +167,25 @@ public class Utils {
         return false;
     }
 
+    // 数组转链表
+    public static TreeNode createNode(int[] arr) {
+        if (arr == null || arr.length < 1) return null;
+
+        return getNode(arr, 0);
+    }
+
+    public static TreeNode getNode(int[] arr, int index) {
+        if (index >= arr.length) return null;
+        if (arr[index] != -1) {
+            TreeNode node = new TreeNode(arr[index]);
+            node.val = arr[index];
+            node.left = getNode(arr, index * 2 + 1);
+            node.right = getNode(arr, index * 2 + 2);
+            return node;
+        }
+        return null;
+    }
+
     public static TreeNode reConstructBinaryTree(int[] pre, int[] in) {
         if (pre.length == 0 || in.length == 0) return null;
         TreeNode tree = new TreeNode(pre[0]);
@@ -243,5 +265,25 @@ public class Utils {
         String[] s1 = s.split(" ");
         if (s1 == null || s1.length < 1) return 0;
         return s1[s1.length - 1].length();
+    }
+
+    public static List<Integer> toList(int[] arr) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < arr.length; i++) {
+            list.add(arr[i]);
+        }
+        return list;
+    }
+
+    public static List<List<Integer>> toList(int[][] arr) {
+        List<List<Integer>> list = new ArrayList<>();
+        for (int i = 0; i < arr.length; i++) {
+            List<Integer> temp = new ArrayList<>();
+            for (int j = 0; j < arr[i].length; j++) {
+                temp.add(arr[i][j]);
+            }
+            list.add(temp);
+        }
+        return list;
     }
 }

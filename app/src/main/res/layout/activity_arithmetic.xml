@@ -4,62 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ArithmeticActivity">
+    tools:context=".arithmetic.ArithmeticActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="clickCompare"
-                android:text="计算合值" />
-
-            <Button
-                android:id="@+id/subtract"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="clickCompare"
-                android:text="计算差值" />
-
-            <Button
-                android:id="@+id/multiply"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="clickCompare"
-                android:text="计算相乘" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/compareNum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="clickCompare"
-                android:text="判断输入值是否在二维数组中" />
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/compareTo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="clickCompare"
-            android:text="对比输入数值大小" />
 
         <EditText
             android:id="@+id/et1"
@@ -84,75 +34,13 @@
             android:textColor="#111"
             android:textSize="16sp" />
 
-        <LinearLayout
+        <com.uratio.testdemo.animlist.FlowLayout
+            android:id="@+id/flow_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/rebuild_treeNode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="clickCompare"
-                android:text="重建二叉树" />
-
-            <Button
-                android:id="@+id/reverse_linked_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="clickCompare"
-                android:text="翻转链表" />
-
-            <Button
-                android:id="@+id/last_word_length"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="clickCompare"
-                android:text="最后单词长度" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/thread_print"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="clickCompare"
-                android:text="线程顺序打印" />
-
-            <Button
-                android:id="@+id/thread_print2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="clickCompare"
-                android:text="线程顺序打印2" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/table_size_for"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="clickCompare"
-                android:text="计算容量最近的2的幂数" />
-
-            <Button
-                android:id="@+id/btn_hash"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="clickCompare"
-                android:text="计算hash值" />
-
-        </LinearLayout>
+            android:paddingTop="15dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"/>
 
     </LinearLayout>
 </ScrollView>
