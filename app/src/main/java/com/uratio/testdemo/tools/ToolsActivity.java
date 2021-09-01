@@ -47,6 +47,7 @@ public class ToolsActivity extends AppCompatActivity implements ToolsRcvAdapter.
         dataList.add("打印照片");
         dataList.add("打印HTML");
 
+
     }
 
     @Override
