@@ -30,6 +30,10 @@ public class ArithmeticConfig {
         list.add("实现二叉树先序，中序和后序遍历");
         list.add("快速排序");
         list.add("寻找第K大");
+        list.add("子数组的最大累加和问题");
+        list.add("反转字符串");
+        list.add("最长回文子串");
+        list.add("表达式求值");
         return list;
     }
 }

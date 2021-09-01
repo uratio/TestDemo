@@ -57,6 +57,7 @@ public class ArithmeticActivity extends AppCompatActivity {
                     String tag = (String) v.getTag();
                     TreeNode treeNode = null;
                     int[] arr = null;
+                    String str = "";
                     switch (tag) {
                         case "计算合值":
                             String addStr = Utils.addLargeNumbers(et1.getText().toString(), et2.getText().toString());
@@ -107,7 +108,7 @@ public class ArithmeticActivity extends AppCompatActivity {
                             tvShow.setText("翻转链表结果：" + sb.toString());
                             break;
                         case "最后单词长度":
-                            String str = et1.getText().toString();
+                            str = et1.getText().toString();
                             LogUtils.e("111111");
                             int res1 = Utils.lengthOfLastWord(str);
                             LogUtils.e("******");
@@ -186,6 +187,22 @@ public class ArithmeticActivity extends AppCompatActivity {
                                     1249664,1199799,1959818,1546744,1904944,51047,1176397,190970,48715,349690,673887,
                                     1648782,1010556,1165786,937247,986578,798663};
                             LogUtils.e("寻找第K大结果=" + ExecuteUtils.findKth(arr, arr.length, 24));
+                            break;
+                        case "子数组的最大累加和问题":
+                            arr = new int[]{1, -2, 3, 5, -2, 6, -1};
+                            LogUtils.e("子数组的最大累加和结果=" + ExecuteUtils.maxSumOfSubArray(arr));
+                            break;
+                        case "反转字符串":
+                            LogUtils.e("反转字符串结果=" + new StringBuilder("fsafdsad").reverse().toString());
+                            break;
+                        case "最长回文子串":
+//                            str = "abc1234321ab";
+                            str = "1234562";
+                            LogUtils.e("最长回文子串的长度=" + ExecuteUtils.getLongestPalindrome(str, str.length()));
+                            break;
+                        case "表达式求值":
+                            str = "3+2*3*4-1";
+                            LogUtils.e("表达式求值：" + str + "=" + ExecuteUtils.solve(str));
                             break;
                     }
                 }

@@ -19,22 +19,72 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".parse.XmlParseActivity"></activity>
-        <activity android:name=".animlist.ListViewActivity" />
-        <activity android:name=".view.ViewStubActivity" />
-        <activity android:name=".load.IndicatorActivity" />
-        <activity android:name=".load.LoadAnimActivity" />
-        <activity android:name=".animlist.AnimRcvActivity" />
-        <activity android:name=".animlist.AnimListActivity" />
-        <activity android:name=".img.LongFigureActivity" />
-        <activity android:name=".designmodel.DesignModelActivity" />
-        <activity android:name=".arithmetic.ArithmeticActivity" />
-        <activity android:name=".workmanager.WorkManagerActivity" />
-        <activity android:name=".PickersActivity" />
-        <activity android:name=".hexagon.HexagonActivity" />
-        <activity android:name=".TitleChangeActivity" />
-        <activity android:name=".WebViewActivity" />
-        <activity android:name=".RcvActivity" />
+        <activity android:name=".tools.ToolsActivity"></activity>
+        <activity
+            android:name=".parse.XmlParseActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".animlist.ListViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.ViewStubActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".load.IndicatorActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".load.LoadAnimActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".animlist.AnimRcvActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".animlist.AnimListActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".img.LongFigureActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".designmodel.DesignModelActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".arithmetic.ArithmeticActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".workmanager.WorkManagerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PickersActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".hexagon.HexagonActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TitleChangeActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WebViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:process=":test_demo_web"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RcvActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ThirdActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

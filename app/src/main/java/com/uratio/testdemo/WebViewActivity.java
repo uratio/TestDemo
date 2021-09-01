@@ -15,6 +15,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.uratio.testdemo.Utils.LogUtils;
+
 public class WebViewActivity extends AppCompatActivity {
     private static final String TAG = "WebViewActivity";
     private WebView webView;
@@ -25,6 +27,20 @@ public class WebViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
 
+        initView();
+
+        initData();
+
+        webView.loadUrl("http://130.1.11.220:9094/index.html#/profile");
+    }
+
+    private void initData() {
+        String url = getIntent().getStringExtra("url");
+        LogUtils.e("跳转的url=" + url);
+        Log.e("test_demo_web", "跳转的url=" + url);
+    }
+
+    private void initView() {
         webView = findViewById(R.id.webView);
 
         WebSettings webSettings = webView.getSettings();
@@ -79,8 +95,6 @@ public class WebViewActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-        webView.loadUrl("http://130.1.11.220:9094/index.html#/profile");
     }
 
     class jsBridge {

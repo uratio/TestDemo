@@ -30,6 +30,7 @@ import com.uratio.testdemo.hexagon.HexagonActivity;
 import com.uratio.testdemo.img.LongFigureActivity;
 import com.uratio.testdemo.load.LoadAnimActivity;
 import com.uratio.testdemo.parse.XmlParseActivity;
+import com.uratio.testdemo.tools.ToolsActivity;
 import com.uratio.testdemo.view.MyEditText;
 import com.uratio.testdemo.view.ViewStubActivity;
 import com.uratio.testdemo.workmanager.WorkManagerActivity;
@@ -147,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_12://WebView
                 intent = new Intent(MainActivity.this, WebViewActivity.class);
+                intent.putExtra("url", "http://www.dajiuge.com");
                 startActivity(intent);
                 break;
             case R.id.btn_13://toast
@@ -195,6 +197,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_43://计算
                 intent = new Intent(MainActivity.this, ArithmeticActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_44://工具
+                intent = new Intent(MainActivity.this, ToolsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn_51://设计模式
