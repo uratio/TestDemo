@@ -2,6 +2,7 @@ package com.uratio.testdemo.animlist;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.animation.Animator;
@@ -151,7 +152,7 @@ public class AnimRcvActivity extends AppCompatActivity implements AnimRcvAdapter
         });
 
         // 系统动画
-//        DefaultItemAnimator defaultItemAnimator = new DefaultItemAnimator();
+        DefaultItemAnimator defaultItemAnimator = new DefaultItemAnimator();
 //        defaultItemAnimator.setAddDuration(1000);
 //        defaultItemAnimator.setRemoveDuration(1000);
 //        recyclerView.setItemAnimator(defaultItemAnimator);
