@@ -1,4 +1,4 @@
-package com.uratio.testdemo.Utils;
+package com.uratio.testdemo.utils;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;

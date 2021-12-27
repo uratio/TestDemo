@@ -1,4 +1,4 @@
-package com.uratio.testdemo.Utils;
+package com.uratio.testdemo.utils;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,10 +8,7 @@ import android.net.Uri;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Utils {
 

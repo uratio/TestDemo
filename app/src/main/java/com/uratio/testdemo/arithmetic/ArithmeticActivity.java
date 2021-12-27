@@ -13,20 +13,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.uratio.testdemo.R;
-import com.uratio.testdemo.Utils.ListNode;
-import com.uratio.testdemo.Utils.LogUtils;
-import com.uratio.testdemo.Utils.TreeNode;
-import com.uratio.testdemo.Utils.Utils;
+import com.uratio.testdemo.utils.ListNode;
+import com.uratio.testdemo.utils.LogUtils;
+import com.uratio.testdemo.utils.TreeNode;
+import com.uratio.testdemo.utils.Utils;
 import com.uratio.testdemo.animlist.FlowLayout;
 import com.uratio.testdemo.thread.TestPrint;
 import com.uratio.testdemo.thread.TestRun;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ArithmeticActivity extends AppCompatActivity {
     private EditText et1, et2;

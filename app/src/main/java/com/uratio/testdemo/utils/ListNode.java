@@ -1,4 +1,4 @@
-package com.uratio.testdemo.Utils;
+package com.uratio.testdemo.utils;
 
 public class ListNode {
     public int val;

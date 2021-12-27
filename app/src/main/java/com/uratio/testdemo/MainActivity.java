@@ -20,7 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.uratio.testdemo.Utils.Utils;
+import com.uratio.testdemo.utils.Utils;
 import com.uratio.testdemo.animlist.AnimListActivity;
 import com.uratio.testdemo.animlist.AnimRcvActivity;
 import com.uratio.testdemo.animlist.ListViewActivity;

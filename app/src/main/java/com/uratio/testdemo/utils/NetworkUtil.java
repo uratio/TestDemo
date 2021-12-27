@@ -1,4 +1,4 @@
-package com.uratio.testdemo.Utils;
+package com.uratio.testdemo.utils;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

@@ -19,7 +19,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.uratio.testdemo.R;
-import com.uratio.testdemo.Utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
