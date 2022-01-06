@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.uratio.testdemo.R;
 
 public class SingleTaskActivity extends AppCompatActivity {
+    private int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +22,17 @@ public class SingleTaskActivity extends AppCompatActivity {
         Intent intent = null;
         switch (view.getId()) {
             case R.id.to_top:
-                startActivity(new Intent(SingleTaskActivity.this, SingleInstanceActivity.class));
+                count++;
+                Intent intent1 = new Intent(SingleTaskActivity.this, SingleTopActivity.class);
+                intent1.putExtra("data", "SingleTask页面过来：" + count);
+                startActivity(intent1);
+                break;
+            case R.id.to_task:
+                startActivity(new Intent(SingleTaskActivity.this, SingleTaskActivity.class));
+                break;
             case R.id.to_instance:
                 intent = new Intent(SingleTaskActivity.this, SingleInstanceActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 break;
         }

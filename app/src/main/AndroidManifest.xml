@@ -110,6 +110,18 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+        <activity
+            android:name=".test.SingleInstanceActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance"/>
+        <activity
+            android:name=".test.SingleTaskActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"/>
+        <activity
+            android:name=".test.SingleTopActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"/>
     </application>
 
 </manifest>

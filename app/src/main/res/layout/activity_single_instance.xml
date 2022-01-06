@@ -21,6 +21,13 @@
         android:onClick="onClickView"
         android:text="toTask"/>
 
+    <Button
+        android:id="@+id/to_instance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickView"
+        android:text="toInstance"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -10,16 +10,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.uratio.testdemo.R;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.concurrent.TimeUnit;
 
-import rx.Observable;
-import rx.Observer;
-import rx.Scheduler;
-import rx.Subscriber;
-import rx.functions.Action0;
-import rx.functions.Action1;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.ObservableSource;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 
 public class TestActivity extends AppCompatActivity {
     private TextView tvText;
@@ -35,15 +38,14 @@ public class TestActivity extends AppCompatActivity {
 
 
         Observable observable = Observable.just("hello", "hi", "Aloha");
-        observable.subscribe(new Observer() {
-
+        observable.subscribe(new Observer<String>() {
             @Override
-            public void onNext(Object o) {
+            public void onSubscribe(@NotNull Disposable d) {
 
             }
 
             @Override
-            public void onCompleted() {
+            public void onNext(@NotNull String s) {
 
             }
 
@@ -51,72 +53,44 @@ public class TestActivity extends AppCompatActivity {
             public void onError(Throwable e) {
 
             }
-        });
-        observable.subscribe(new Subscriber<String>() {
 
             @Override
-            public void onNext(String s) {
-
-            }
-
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable t) {
+            public void onComplete() {
 
             }
         });
-
-        Action1<String> onNextAction = new Action1<String>() {
-            @Override
-            public void call(String s) {
-
-            }
-        };
-        Action1<Throwable> onErrorAction = new Action1<Throwable>() {
-            @Override
-            public void call(Throwable throwable) {
-
-            }
-        };
-        Action0 onCompletedAction = new Action0() {
-            @Override
-            public void call() {
-
-            }
-        };
-        observable.subscribe(onNextAction);
-        observable.subscribe(onNextAction, onErrorAction);
-        observable.subscribe(onNextAction, onErrorAction, onCompletedAction);
 
 
         final int drawables = 0;
-        Observable.create(new Observable.OnSubscribe<Drawable>() {
+        Observable.create(new ObservableOnSubscribe<Drawable>() {
             @Override
-            public void call(Subscriber<? super Drawable> subscriber) {
+            public void subscribe(@NotNull ObservableEmitter<Drawable> emitter) throws Exception {
                 Drawable drawable = getResources().getDrawable(drawables);
-                subscriber.onNext(drawable);
-                subscriber.onCompleted();
+                emitter.onNext(drawable);
             }
-        }).subscribe(new Subscriber<Drawable>() {
-            @Override
-            public void onCompleted() {
+        }).subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Drawable>() {
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
 
-            }
+                    }
 
-            @Override
-            public void onError(Throwable e) {
+                    @Override
+                    public void onNext(@NotNull Drawable drawable) {
 
-            }
+                    }
 
-            @Override
-            public void onNext(Drawable drawable) {
+                    @Override
+                    public void onError(@NotNull Throwable e) {
 
-            }
-        });
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
 
 //        Observable.just("image/logo.png")
 //                .map(new Func1<String, Bitmap>() {
@@ -133,39 +107,47 @@ public class TestActivity extends AppCompatActivity {
 //                });
 
         Student[] students = new Student[3];
-        Subscriber<Course> subscriber = new Subscriber<Course>() {
+        Observer<Course> observer = new Observer<Course>() {
             @Override
-            public void onCompleted() {
+            public void onSubscribe(@NotNull Disposable d) {
 
             }
 
             @Override
-            public void onError(Throwable e) {
+            public void onNext(@NotNull Course course) {
 
             }
 
             @Override
-            public void onNext(Course course) {
+            public void onError(@NotNull Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
 
             }
         };
-        Observable.from(students)
-                .subscribeOn(Schedulers.immediate())
-                .flatMap(new Func1<Student, Observable<Course>>() {
+        /**
+         * 有问题
+         */
+        Observable.just(students)
+                .subscribeOn(Schedulers.io())
+                .flatMap(new Function<Student[], ObservableSource<?>>() {
                     @Override
-                    public Observable<Course> call(Student student) {
-                        return Observable.from(student.getCourses());
+                    public ObservableSource<?> apply(@NotNull Student[] students) throws Exception {
+                        return Observable.just(students);
                     }
                 })
-                .subscribeOn(Schedulers.test())
-                .subscribe(subscriber);
+                .subscribeOn(Schedulers.newThread())
+                .subscribe((Consumer<? super Object>) observer);
 
         //防抖动
         RxUtils.clickView(button)
                 .throttleFirst(1000, TimeUnit.MILLISECONDS)
-                .subscribe(new Action1<Void>() {
+                .subscribe(new Consumer<Void>() {
                     @Override
-                    public void call(Void aVoid) {
+                    public void accept(Void aVoid) {
                         //点击了button
                     }
                 });

@@ -14,6 +14,24 @@ public class Utils {
 
     private static final String TAG = "Utils_Log";
 
+    public static void main(String[] args) {
+        ListNode node = new ListNode(2);
+        node.next = new ListNode(3);
+        node.next.next = new ListNode(5);
+        node.next.next.next = new ListNode(4);
+        node.next.next.next.next = new ListNode(1);
+        node.next.next.next.next.next = new ListNode(6);
+        node.next.next.next.next.next.next = new ListNode(3);
+        node.next.next.next.next.next.next.next = new ListNode(7);
+        ListNode result2 = Utils.deleteRepeat(node, 4);
+        StringBuilder sb2 = new StringBuilder();
+        while (result2 != null) {
+            sb2.append(result2.val);
+            result2 = result2.next;
+        }
+        System.out.println("删除链表所有重复元素：" + sb2.toString());
+    }
+
     public static void getAllAppNames(Activity activity) {
         PackageManager pm = activity.getPackageManager();
         //PackageManager.GET_UNINSTALLED_PACKAGES==8192
@@ -206,13 +224,14 @@ public class Utils {
                 Math.min(original.length - from, newLength));
         return copy;
     }
+
     /**
      *
      * @param head ListNode类
      * @param k int整型
      * @return ListNode类
      */
-    public static ListNode reverseKGroup (ListNode head, int k) {
+    public static ListNode reverseKGroup(ListNode head, int k) {
         // write code here
         if (head == null || head.next == null || k == 1) return head;
         int t = k - 1;
@@ -234,6 +253,32 @@ public class Utils {
                 p1 = p1.next;
                 p2 = p1;
                 t = k - 1;
+            }
+        }
+        return head;
+    }
+
+    /**
+     *
+     * @param head ListNode类
+     * @param val 重复数值
+     * @return ListNode类
+     */
+    public static ListNode deleteRepeat(ListNode head, int val) {
+        // write code here
+        if (head == null) return null;
+        ListNode prev = head, next = head.next;
+        if (next == null) {
+            if (head.val == val) {
+                return null;
+            } else {
+                return head;
+            }
+        }
+        while (next != null) {
+            if (prev.val == val) {
+                prev = next;
+                next = next.next;
             }
         }
         return head;

@@ -4,8 +4,11 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
-import rx.Observable;
-import rx.Subscriber;
+import org.jetbrains.annotations.NotNull;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 
 /**
  * Created by wangkangfei on 17/4/21.
@@ -27,7 +30,7 @@ public class RxUtils {
         }
     }
 
-    private static class ViewClickOnSubscribe implements Observable.OnSubscribe<Void> {
+    private static class ViewClickOnSubscribe implements ObservableOnSubscribe<Void> {
         private View view;
 
         public ViewClickOnSubscribe(View view) {
@@ -35,14 +38,14 @@ public class RxUtils {
         }
 
         @Override
-        public void call(final Subscriber<? super Void> subscriber) {
+        public void subscribe(@NotNull ObservableEmitter<Void> emitter) throws Exception {
             View.OnClickListener onClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //订阅没取消
-                    if (!subscriber.isUnsubscribed()) {
+                    if (!emitter.isDisposed()) {
                         //发送消息
-                        subscriber.onNext(null);
+                        emitter.onNext(null);
                     }
                 }
             };

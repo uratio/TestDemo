@@ -17,6 +17,7 @@ public class ArithmeticConfig {
         list.add("对比输入数值大小");
         list.add("重建二叉树");
         list.add("翻转链表");
+        list.add("删除链表所有重复元素");
         list.add("最后单词长度");
         list.add("线程顺序打印");
         list.add("线程顺序打印2");

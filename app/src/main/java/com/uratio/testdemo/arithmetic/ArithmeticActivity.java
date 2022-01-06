@@ -55,6 +55,7 @@ public class ArithmeticActivity extends AppCompatActivity {
                     TreeNode treeNode = null;
                     int[] arr = null;
                     String str = "";
+                    ListNode node;
                     switch (tag) {
                         case "计算合值":
                             String addStr = Utils.addLargeNumbers(et1.getText().toString(), et2.getText().toString());
@@ -90,7 +91,7 @@ public class ArithmeticActivity extends AppCompatActivity {
                             tvShow.setText("重建二叉树结果：" + treeArr(treeNode, true));
                             break;
                         case "翻转链表":
-                            ListNode node = new ListNode(1);
+                            node = new ListNode(1);
                             node.next = new ListNode(2);
                             node.next.next = new ListNode(3);
                             node.next.next.next = new ListNode(4);
@@ -103,6 +104,23 @@ public class ArithmeticActivity extends AppCompatActivity {
                                 temp = temp.next;
                             }
                             tvShow.setText("翻转链表结果：" + sb.toString());
+                            break;
+                        case "删除链表所有重复元素":
+                            node = new ListNode(2);
+                            node.next = new ListNode(3);
+                            node.next.next = new ListNode(5);
+                            node.next.next.next = new ListNode(4);
+                            node.next.next.next.next = new ListNode(1);
+                            node.next.next.next.next.next = new ListNode(6);
+                            node.next.next.next.next.next.next = new ListNode(3);
+                            node.next.next.next.next.next.next.next = new ListNode(7);
+                            ListNode result2 = Utils.deleteRepeat(node, 4);
+                            StringBuilder sb2 = new StringBuilder();
+                            while (result2 != null) {
+                                sb2.append(result2.val);
+                                result2 = result2.next;
+                            }
+                            tvShow.setText("删除链表所有重复元素：" + sb2.toString());
                             break;
                         case "最后单词长度":
                             str = et1.getText().toString();
