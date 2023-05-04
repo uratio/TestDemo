@@ -2,10 +2,10 @@ class Config {
 
     static applicationId = 'com.uratio.testdemo'
     static appName = 'Test'
-    static compileSdkVersion = 31
-    static buildToolsVersion = '31.0.0'
+    static compileSdkVersion = 30
+    static buildToolsVersion = '30.0.3'
     static minSdkVersion = 19
-    static targetSdkVersion = 31
+    static targetSdkVersion = 30
     static versionCode = 1
     static versionName = '1.0.0'
 

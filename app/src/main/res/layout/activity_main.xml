@@ -249,6 +249,7 @@
         android:id="@+id/edit_text"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:inputType="text"
         android:gravity="center_vertical"
         android:padding="15dp"
         android:text="输入的文字"/>
