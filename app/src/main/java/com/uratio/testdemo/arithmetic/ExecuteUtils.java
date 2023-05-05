@@ -2,18 +2,14 @@ package com.uratio.testdemo.arithmetic;
 
 import android.os.Build;
 
-import com.uratio.testdemo.Utils.LogUtils;
-import com.uratio.testdemo.Utils.TreeNode;
+import com.uratio.testdemo.utils.LogUtils;
+import com.uratio.testdemo.utils.TreeNode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.Stack;
 
 /**

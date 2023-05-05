@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.uratio.testdemo.BuildConfig;
-import com.uratio.testdemo.Utils.CommonConfig;
+import com.uratio.testdemo.utils.CommonConfig;
 
 /**
  * @author lang

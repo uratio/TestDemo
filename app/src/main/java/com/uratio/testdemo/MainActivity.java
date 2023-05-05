@@ -20,7 +20,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.uratio.testdemo.Utils.Utils;
+import com.uratio.testdemo.test.SingleTopActivity;
+import com.uratio.testdemo.utils.Utils;
 import com.uratio.testdemo.animlist.AnimListActivity;
 import com.uratio.testdemo.animlist.AnimRcvActivity;
 import com.uratio.testdemo.animlist.ListViewActivity;
@@ -246,6 +247,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_xml_parse:// xml解析
                 intent = new Intent(MainActivity.this, XmlParseActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_top_act:// 启动模式为 SingleTop 的Activity
+                intent = new Intent(MainActivity.this, SingleTopActivity.class);
                 startActivity(intent);
                 break;
         }
