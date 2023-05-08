@@ -14,29 +14,29 @@ public class ArithmeticTest {
 
     /**
      * 3、无重复字符的最长子串
-     * <p>
+     *
      * 给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
-     * <p>
+     *
      * 示例 1:
-     * <p>
+     *
      * 输入: s = "abcabcbb"
      * 输出: 3
      * 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
      * 示例 2:
-     * <p>
+     *
      * 输入: s = "bbbbb"
      * 输出: 1
      * 解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。
      * 示例 3:
-     * <p>
+     *
      * 输入: s = "pwwkew"
      * 输出: 3
      * 解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
      * 请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
-     * <p>
-     * <p>
+     *
+     *
      * 提示：
-     * <p>
+     *
      * 0 <= s.length <= 5 * 104
      * s 由英文字母、数字、符号和空格组成
      */
@@ -96,17 +96,17 @@ public class ArithmeticTest {
     /**
      * 4、寻找两个正序数组的中位数
      * 给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的 中位数 。
-     * <p>
+     *
      * 算法的时间复杂度应该为 O(log (m+n)) 。
-     * <p>
-     * <p>
+     *
+     *
      * 示例 1：
-     * <p>
+     *
      * 输入：nums1 = [1,3], nums2 = [2]
      * 输出：2.00000
      * 解释：合并数组 = [1,2,3] ，中位数 2
      * 示例 2：
-     * <p>
+     *
      * 输入：nums1 = [1,2], nums2 = [3,4]
      * 输出：2.50000
      * 解释：合并数组 = [1,2,3,4] ，中位数 (2 + 3) / 2 = 2.5
@@ -201,54 +201,54 @@ public class ArithmeticTest {
 
     /**
      * 88、合并两个有序数组
-     * <p>
+     *
      * 给你两个按 非递减顺序 排列的整数数组 nums1 和 nums2，另有两个整数 m 和 n ，分别表示 nums1 和 nums2 中的元素数目。
-     * <p>
+     *
      * 请你 合并 nums2 到 nums1 中，使合并后的数组同样按 非递减顺序 排列。
-     * <p>
+     *
      * 注意：最终，合并后数组不应由函数返回，而是存储在数组 nums1 中。为了应对这种情况，nums1 的初始长度为 m + n，其中前 m 个元素表示应合并的元素，后 n 个元素为 0 ，应忽略。nums2 的长度为 n 。
-     * <p>
-     * <p>
+     *
+     *
      * 示例 1：
-     * <p>
+     *
      * 输入：nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
      * 输出：[1,2,2,3,5,6]
      * 解释：需要合并 [1,2,3] 和 [2,5,6] 。
      * 合并结果是 [1,2,2,3,5,6] ，其中斜体加粗标注的为 nums1 中的元素。
      * 示例 2：
-     * <p>
+     *
      * 输入：nums1 = [1], m = 1, nums2 = [], n = 0
      * 输出：[1]
      * 解释：需要合并 [1] 和 [] 。
      * 合并结果是 [1] 。
      * 示例 3：
-     * <p>
+     *
      * 输入：nums1 = [0], m = 0, nums2 = [1], n = 1
      * 输出：[1]
      * 解释：需要合并的数组是 [] 和 [1] 。
      * 合并结果是 [1] 。
      * 注意，因为 m = 0 ，所以 nums1 中没有元素。nums1 中仅存的 0 仅仅是为了确保合并结果可以顺利存放到 nums1 中。
-     * <p>
-     * <p>
+     *
+     *
      * 提示：
-     * <p>
+     *
      * nums1.length == m + n
      * nums2.length == n
      * 0 <= m, n <= 200
      * 1 <= m + n <= 200
      * -109 <= nums1[i], nums2[j] <= 109
-     * <p>
-     * <p>
+     *
+     *
      * 进阶：你可以设计实现一个时间复杂度为 O(m + n) 的算法解决此问题吗？
      */
     @Test
     public void mergeIntArray() {
 //        int[] res = merge(new int[]{1,2,3,0,0,0},3,new int[]{2,5,6},3);
-        int[] res = merge(new int[]{2, 0}, 1, new int[]{1}, 1);
+        int[] res = mergeIntArray1(new int[]{2, 0}, 1, new int[]{1}, 1);
         System.out.println(Arrays.toString(res));
     }
 
-    private int[] merge(int[] nums1, int m, int[] nums2, int n) {
+    private int[] mergeIntArray1(int[] nums1, int m, int[] nums2, int n) {
         int x = 0;
         int y = 0;
         int[] res = new int[m + n];
@@ -291,5 +291,99 @@ public class ArithmeticTest {
      */
     @Test
     public void longestPalindrome() {
+        String str = "babad";
+        System.out.println(longestPalindrome1(str));
+        System.out.println(longestPalindrome2(str));
+    }
+
+    /**
+     * 动态规划 —— 方法求解
+     * 时间复杂度为 O(n^2)
+     *
+     * 我们用 P(i,j)P(i,j)P(i,j) 表示字符串 sss 的第 iii 到 jjj 个字母组成的串（下文表示成 s[i:j]s[i:j]s[i:j]）是否为回文串：
+     *
+     * P(i,j) = true：如果子串 Si..Sj是回文串
+     * P(i,j) = false：其他情况：①、s[i,j] 本身不是一个回文串
+     * ②、i > j ，此时 s[i,j] 本身不合法
+     *
+     * 那么我们就可以写出动态规划的状态转移方程：
+     * P(i,j)=P(i+1,j−1)∧(Si==Sj)
+     * 也就是说，只有 s[i+1:j−1] 是回文串，并且 sss 的第 i 和 j 个字母相同时，s[i:j] 才会是回文串
+     * 还需要考虑动态规划中的边界条件，即子串的长度为 1 或 2
+     */
+    public String longestPalindrome1(String s) {
+        int length = s.length();
+        if (length < 2) return s;
+        Map<Character, Integer> map = new HashMap<Character, Integer>();
+        int left = 0;
+        int len = 1;
+        // dp[i][j] 表示 s[i..j] 是否是回文串
+        boolean[][] dp = new boolean[length][length];
+        for (int i = 0; i < length; i++) {
+            dp[i][i] = true;
+        }
+
+        char[] charArr = s.toCharArray();
+
+        for (int L = 2; L <= length; L++) {
+            for (int i = 0; i < length; i++) {
+                // 由 L 和 i 可以确定右边界，即 j - i + 1 = L 得
+                int j = L + i - 1;
+                // 如果右边界越界，就可以退出当前循环
+                if (j >= length) {
+                    break;
+                }
+
+                if (charArr[i] != charArr[j]) {
+                    dp[i][j] = false;
+                } else {
+                    // si 和 sj相同时
+                    // j-i < 3时，dp[i][j]肯定是true，反之用动态规划公式求解
+                    if (j - i < 3) {
+                        dp[i][j] = true;
+                    } else {
+                        dp[i][j] = dp[i + 1][j - 1];
+                    }
+                }
+
+                // 只要 dp[i][L] == true 成立，就表示子串 s[i..L] 是回文，此时记录回文长度和起始位置
+                if (dp[i][j] && j - i + 1 > len) {
+                    len = L;
+                    left = i;
+                }
+            }
+        }
+
+        return s.substring(left, left + len);
+    }
+
+    /**
+     * 最快，内存使用最少解
+     * 时间复杂度为 O(n^2)
+     */
+    public String longestPalindrome2(String s) {
+        String max = "";
+        for (int i = 0; i < s.length(); ) {
+            int start = i, end = i;
+            // i 递增，从 start 向后找到最后相同的元素
+            while (end < s.length() - 1 && s.charAt(end) == s.charAt(end + 1)) {
+                end++;
+            }
+            i = end + 1;
+
+            // 从上一步的 start 和 end 向前后扩展验证是否元素相同，直到不是回文串为止
+            while (start > 0 && end < s.length() - 1 && s.charAt(start - 1) == s.charAt(end + 1)) {
+                start--;
+                end++;
+            }
+            // 对比每个回文串长度，并存储最大值
+            int len = max.length();
+
+            if (end - start + 1 >= len) {
+                max = s.substring(start, end + 1);
+            }
+        }
+
+        return max;
     }
 }
