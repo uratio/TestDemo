@@ -386,4 +386,49 @@ public class ArithmeticTest {
 
         return max;
     }
+
+    @Test
+    public void convert() {
+//        String str = "PAYPALISHIRING"; // 4
+        String str = "ABC"; // 2
+        System.out.println(convert1(str, 2));
+    }
+
+    private String convert1(String s, int numRows) {
+        int len = s.length();
+        if(len < 2 || numRows < 2) return s;
+
+        int hLen = len / 2 + (len % 2 == 0 ? 0 : 1);
+        char[][] dp = new char[numRows][hLen];
+        int index = 0;
+        for(int i = 0; i < hLen; i++) {
+            int j = i % (numRows - 1);
+            if(j == 0) {
+                for(; j < numRows; j++) {
+                    dp[j][i] = s.charAt(index++);
+
+                    if(index == len) {
+                        break;
+                    }
+                }
+            } else {
+                dp[numRows - j - 1][i] = s.charAt(index++);
+            }
+            if(index == len) {
+                break;
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < numRows; i++) {
+            for(int j = 0; j < hLen; j++) {
+                if(dp[i][j] != 0) {
+                    sb.append(dp[i][j]);
+                }
+                System.out.print(dp[i][j] + " ");
+            }
+            System.out.println("");
+        }
+        return sb.toString();
+    }
 }
