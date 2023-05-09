@@ -2,8 +2,10 @@ package com.uratio.testdemo;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -387,6 +389,40 @@ public class ArithmeticTest {
         return max;
     }
 
+    /**
+     * N 字形变换
+     * 将一个给定字符串 s 根据给定的行数 numRows ，以从上往下、从左到右进行 Z 字形排列。
+     *
+     * 比如输入字符串为 "PAYPALISHIRING" 行数为 3 时，排列如下：
+     *
+     * P   A   H   N
+     * A P L S I I G
+     * Y   I   R
+     * 之后，你的输出需要从左往右逐行读取，产生出一个新的字符串，比如："PAHNAPLSIIGYIR"。
+     *
+     * 示例 1：
+     *
+     * 输入：s = "PAYPALISHIRING", numRows = 3
+     * 输出："PAHNAPLSIIGYIR"
+     * 示例 2：
+     * 输入：s = "PAYPALISHIRING", numRows = 4
+     * 输出："PINALSIGYAHRPI"
+     * 解释：
+     * P     I    N
+     * A   L S  I G
+     * Y A   H R
+     * P     I
+     * 示例 3：
+     *
+     * 输入：s = "A", numRows = 1
+     * 输出："A"
+     *
+     * 提示：
+     *
+     * 1 <= s.length <= 1000
+     * s 由英文字母（小写和大写）、',' 和 '.' 组成
+     * 1 <= numRows <= 1000
+     */
     @Test
     public void convert() {
 //        String str = "PAYPALISHIRING"; // 4
@@ -396,33 +432,33 @@ public class ArithmeticTest {
 
     private String convert1(String s, int numRows) {
         int len = s.length();
-        if(len < 2 || numRows < 2) return s;
+        if (len < 2 || numRows < 2) return s;
 
         int hLen = len / 2 + (len % 2 == 0 ? 0 : 1);
         char[][] dp = new char[numRows][hLen];
         int index = 0;
-        for(int i = 0; i < hLen; i++) {
+        for (int i = 0; i < hLen; i++) {
             int j = i % (numRows - 1);
-            if(j == 0) {
-                for(; j < numRows; j++) {
+            if (j == 0) {
+                for (; j < numRows; j++) {
                     dp[j][i] = s.charAt(index++);
 
-                    if(index == len) {
+                    if (index == len) {
                         break;
                     }
                 }
             } else {
                 dp[numRows - j - 1][i] = s.charAt(index++);
             }
-            if(index == len) {
+            if (index == len) {
                 break;
             }
         }
 
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < numRows; i++) {
-            for(int j = 0; j < hLen; j++) {
-                if(dp[i][j] != 0) {
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < hLen; j++) {
+                if (dp[i][j] != 0) {
                     sb.append(dp[i][j]);
                 }
                 System.out.print(dp[i][j] + " ");
@@ -430,5 +466,55 @@ public class ArithmeticTest {
             System.out.println("");
         }
         return sb.toString();
+    }
+
+    /**
+     * 官方解法，考虑周长
+     */
+    private String convert2(String s, int numRows) {
+        int n = s.length(), r = numRows;
+        if (r == 1 || r >= n) {
+            return s;
+        }
+        int t = r * 2 - 2;
+        int c = (n + t - 1) / t * (r - 1);
+        char[][] mat = new char[r][c];
+        for (int i = 0, x = 0, y = 0; i < n; ++i) {
+            mat[x][y] = s.charAt(i);
+            if (i % t < r - 1) {
+                ++x; // 向下移动
+            } else {
+                --x;
+                ++y; // 向右上移动
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                if (mat[i][j] != 0) {
+                    sb.append(mat[i][j]);
+                }
+            }
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 根据规律依次变换坐标，填充 s 对应的索引的元素
+     */
+    private String convert3(String s, int numRows) {
+        if (numRows < 2) return s;
+        List<StringBuilder> rows = new ArrayList<StringBuilder>();
+        for (int i = 0; i < numRows; i++) rows.add(new StringBuilder());
+        int i = 0, flag = -1;
+        for (char c : s.toCharArray()) {
+            rows.get(i).append(c);
+            if (i == 0 || i == numRows - 1) flag = -flag;
+            i += flag;
+        }
+        StringBuilder res = new StringBuilder();
+        for (StringBuilder row : rows) res.append(row);
+        return res.toString();
     }
 }
