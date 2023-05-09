@@ -390,11 +390,10 @@ public class ArithmeticTest {
     }
 
     /**
-     * N 字形变换
+     * 6、N 字形变换
      * 将一个给定字符串 s 根据给定的行数 numRows ，以从上往下、从左到右进行 Z 字形排列。
      *
      * 比如输入字符串为 "PAYPALISHIRING" 行数为 3 时，排列如下：
-     *
      * P   A   H   N
      * A P L S I I G
      * Y   I   R
@@ -418,7 +417,6 @@ public class ArithmeticTest {
      * 输出："A"
      *
      * 提示：
-     *
      * 1 <= s.length <= 1000
      * s 由英文字母（小写和大写）、',' 和 '.' 组成
      * 1 <= numRows <= 1000
@@ -428,6 +426,8 @@ public class ArithmeticTest {
 //        String str = "PAYPALISHIRING"; // 4
         String str = "ABC"; // 2
         System.out.println(convert1(str, 2));
+        System.out.println(convert2(str, 2));
+        System.out.println(convert3(str, 2));
     }
 
     private String convert1(String s, int numRows) {
@@ -516,5 +516,61 @@ public class ArithmeticTest {
         StringBuilder res = new StringBuilder();
         for (StringBuilder row : rows) res.append(row);
         return res.toString();
+    }
+
+    /**
+     * 7、整数反转
+     * 给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。
+     * 如果反转后整数超过 32 位的有符号整数的范围 [−231,  231 − 1] ，就返回 0。
+     * 假设环境不允许存储 64 位整数（有符号或无符号）。
+     */
+    @Test
+    public void reverse() {
+        int x = 123;
+//        int x = -123;
+//        int x = 120;
+        System.out.println(reverse1(x));
+        System.out.println(reverse2(x));
+    }
+
+    public int reverse1(int x) {
+        int res = 0;
+        while(x != 0) {
+            if(res < Integer.MIN_VALUE / 10 || res > Integer.MAX_VALUE / 10) {
+                return 0;
+            }
+            int digit = x % 10;
+            x /= 10;
+            res = res * 10 + digit;
+        }
+        return res;
+    }
+
+    public int reverse2(int x) {
+        String s = x + "";
+        boolean hasMinus = s.startsWith("-");
+        if(hasMinus) {
+            s = s.substring(1);
+        }
+        int len = s.length();
+        StringBuilder sb = new StringBuilder();
+        boolean canSave = false;
+        for(int i = len - 1; i >= 0; i--) {
+            if(canSave) {
+                sb.append(s.charAt(i));
+            } else {
+                if(s.charAt(i) != 0) {
+                    canSave = true;
+                    sb.append(s.charAt(i));
+                } else {
+                    canSave = false;
+                }
+            }
+        }
+        try{
+            return Integer.parseInt((hasMinus ? "-" : "") + sb.toString());
+        } catch(Exception e) {
+            return 0;
+        }
     }
 }
