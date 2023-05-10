@@ -554,8 +554,8 @@ public class ArithmeticTest {
 
     public int reverse1(int x) {
         int res = 0;
-        while(x != 0) {
-            if(res < Integer.MIN_VALUE / 10 || res > Integer.MAX_VALUE / 10) {
+        while (x != 0) {
+            if (res < Integer.MIN_VALUE / 10 || res > Integer.MAX_VALUE / 10) {
                 return 0;
             }
             int digit = x % 10;
@@ -568,17 +568,17 @@ public class ArithmeticTest {
     public int reverse2(int x) {
         String s = x + "";
         boolean hasMinus = s.startsWith("-");
-        if(hasMinus) {
+        if (hasMinus) {
             s = s.substring(1);
         }
         int len = s.length();
         StringBuilder sb = new StringBuilder();
         boolean canSave = false;
-        for(int i = len - 1; i >= 0; i--) {
-            if(canSave) {
+        for (int i = len - 1; i >= 0; i--) {
+            if (canSave) {
                 sb.append(s.charAt(i));
             } else {
-                if(s.charAt(i) != 0) {
+                if (s.charAt(i) != 0) {
                     canSave = true;
                     sb.append(s.charAt(i));
                 } else {
@@ -586,10 +586,103 @@ public class ArithmeticTest {
                 }
             }
         }
-        try{
+        try {
             return Integer.parseInt((hasMinus ? "-" : "") + sb.toString());
-        } catch(Exception e) {
+        } catch (Exception e) {
             return 0;
         }
+    }
+
+    /**
+     * 8、字符串转换整数 (atoi)
+     * 请你来实现一个 myAtoi(string s) 函数，使其能将字符串转换成一个 32 位有符号整数（类似 C/C++ 中的 atoi 函数）。
+     *
+     * 函数 myAtoi(string s) 的算法如下：
+     *
+     * 读入字符串并丢弃无用的前导空格
+     * 检查下一个字符（假设还未到字符末尾）为正还是负号，读取该字符（如果有）。 确定最终结果是负数还是正数。 如果两者都不存在，则假定结果为正。
+     * 读入下一个字符，直到到达下一个非数字字符或到达输入的结尾。字符串的其余部分将被忽略。
+     * 将前面步骤读入的这些数字转换为整数（即，"123" -> 123， "0032" -> 32）。如果没有读入数字，则整数为 0 。必要时更改符号（从步骤 2 开始）。
+     * 如果整数数超过 32 位有符号整数范围 [−231,  231 − 1] ，需要截断这个整数，使其保持在这个范围内。具体来说，小于 −231 的整数应该被固定为 −231 ，大于 231 − 1 的整数应该被固定为 231 − 1 。
+     * 返回整数作为最终结果。
+     * 注意：
+     *
+     * 本题中的空白字符只包括空格字符 ' ' 。
+     * 除前导空格或数字后的其余字符串外，请勿忽略 任何其他字符。
+     */
+    @Test
+    public void myAtoi() {
+//        String s = "42";
+//        String s = "   -42";
+
+        //第一个非空字符是 ‘w’, 但它不是数字或正、负号。因此无法执行有效的转换。所以结果应为 0
+        String s = "words and 987";
+        System.out.println(myAtoi1(s));
+    }
+
+    /**
+     * 方法一：自动机
+     *
+     * 思路：字符串处理的题目往往涉及复杂的流程以及条件情况，如果直接上手写程序，一不小心就会写出极其臃肿的代码。
+     * 因此，为了有条理地分析每个输入字符的处理方法，我们可以使用自动机这个概念：
+     * 我们的程序在每个时刻有一个状态 s，每次从序列中输入一个字符 c，并根据字符 c 转移到下一个状态 s'。
+     * 这样，我们只需要建立一个覆盖所有情况的从 s 与 c 映射到 s' 的表格即可解决题目中的问题。
+     *
+     *
+     * 算法：我们也可以用下面的表格来表示这个自动机：
+     * ' '	     +/-	  number   other
+     * start	   start   signed	in_number	end
+     * signed	    end	    end 	in_number	end
+     * in_number	end 	end 	in_number	end
+     * end	    end	    end 	  end	    end
+     *
+     * 接下来编程部分就非常简单了：我们只需要把上面这个状态转换表抄进代码即可。
+     * 另外自动机也需要记录当前已经输入的数字，只要在 s' 为 in_number 时，更新我们输入的数字，即可最终得到输入的数字。
+     */
+    private int myAtoi1(String str) {
+        Automaton automaton = new Automaton();
+        int length = str.length();
+        for (int i = 0; i < length; i++) {
+            automaton.get(str.charAt(i));
+        }
+        return (int) (automaton.sign * automaton.ans);
+    }
+}
+
+class Automaton {
+    public int sign = 1;// 默认为正数
+    public long ans = 0;// 转换总值
+    private String state = "start";
+    private Map<String, String[]> table = new HashMap<String, String[]>() {
+        {
+            put("start", new String[]{"start", "signed", "in_number", "end"});
+            put("signed", new String[]{"end", "end", "in_number", "end"});
+            put("in_number", new String[]{"end", "end", "in_number", "end"});
+            put("end", new String[]{"end", "end", "end", "end"});
+        }
+    };
+
+    public void get(char c) {
+        state = table.get(state)[get_col(c)];
+        if ("in_number".equals(state)) {
+            ans = ans * 10 + c - '0';
+            // 判断是否超过边界，超过边界则最后输出边界值
+            ans = Math.min(ans, sign == 1 ? (long) Integer.MAX_VALUE : (long) Integer.MIN_VALUE);
+        } else if ("signed".equals(state)) {
+            sign = c == '+' ? 1 : -1;
+        }
+    }
+
+    private int get_col(char c) {
+        if (c == ' ') {
+            return 0;
+        }
+        if (c == '+' || c == '-') {
+            return 1;
+        }
+        if (Character.isDigit(c)) {
+            return 2;
+        }
+        return 3;
     }
 }
