@@ -618,6 +618,7 @@ public class ArithmeticTest {
         //第一个非空字符是 ‘w’, 但它不是数字或正、负号。因此无法执行有效的转换。所以结果应为 0
         String s = "words and 987";
         System.out.println(myAtoi1(s));
+        System.out.println(myAtoi2(s));
     }
 
     /**
@@ -639,13 +640,47 @@ public class ArithmeticTest {
      * 接下来编程部分就非常简单了：我们只需要把上面这个状态转换表抄进代码即可。
      * 另外自动机也需要记录当前已经输入的数字，只要在 s' 为 in_number 时，更新我们输入的数字，即可最终得到输入的数字。
      */
-    private int myAtoi1(String str) {
+    private int myAtoi1(String s) {
         Automaton automaton = new Automaton();
-        int length = str.length();
+        int length = s.length();
         for (int i = 0; i < length; i++) {
-            automaton.get(str.charAt(i));
+            automaton.get(s.charAt(i));
         }
         return (int) (automaton.sign * automaton.ans);
+    }
+
+    /**
+     * 用时最快，内存消耗最小
+     */
+    private int myAtoi2(String s) {
+        s = s.trim();
+        if (s == null || s.equals("")) {
+            return 0;
+        }
+        int sign = 0;
+        if(s.charAt(0) == '-'){
+            sign = -1;
+            s = s.substring(1);
+        }else {
+            sign = 1;
+            if(s.charAt(0) == '+'){
+                s = s.substring(1);
+            }
+        }
+        int ans = 0;
+        for (char c : s.toCharArray()) {
+            if (Character.isDigit(c)) {
+                int digit = c - '0';
+                if (ans > Integer.MAX_VALUE / 10 ||
+                        (ans == Integer.MAX_VALUE / 10 && digit > Integer.MAX_VALUE % 10)) {
+                    return sign == -1 ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+                }
+                ans = ans * 10 + digit;
+            } else {
+                break;
+            }
+        }
+        return ans * sign;
     }
 }
 
@@ -667,7 +702,7 @@ class Automaton {
         if ("in_number".equals(state)) {
             ans = ans * 10 + c - '0';
             // 判断是否超过边界，超过边界则最后输出边界值
-            ans = Math.min(ans, sign == 1 ? (long) Integer.MAX_VALUE : (long) Integer.MIN_VALUE);
+            ans = Math.min(ans, sign == 1 ? (long) Integer.MAX_VALUE : -(long) Integer.MIN_VALUE);
         } else if ("signed".equals(state)) {
             sign = c == '+' ? 1 : -1;
         }
