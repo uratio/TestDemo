@@ -658,12 +658,12 @@ public class ArithmeticTest {
             return 0;
         }
         int sign = 0;
-        if(s.charAt(0) == '-'){
+        if (s.charAt(0) == '-') {
             sign = -1;
             s = s.substring(1);
-        }else {
+        } else {
             sign = 1;
-            if(s.charAt(0) == '+'){
+            if (s.charAt(0) == '+') {
                 s = s.substring(1);
             }
         }
@@ -681,6 +681,71 @@ public class ArithmeticTest {
             }
         }
         return ans * sign;
+    }
+
+    /**
+     * 9、回文数
+     * 给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。
+     * 回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
+     *
+     * 例如，121 是回文，而 123 不是。
+     *
+     * 提示：
+     * -231 <= x <= 231 - 1
+     *
+     * 进阶：你能不将整数转为字符串来解决这个问题吗？
+     */
+    @Test
+    public void isPalindrome() {
+//        int x = -121;
+        int x = 1000040001;
+        System.out.println("是否为回文数：" + isPalindrome1(x));
+        System.out.println("是否为回文数：" + isPalindrome2(x));
+    }
+
+    /**
+     * 时间复杂度：O(logn)，对于每次迭代，我们会将输入除以 10，因此时间复杂度为 O(logn)。
+     * 空间复杂度：O(1)。我们只需要常数空间存放若干变量。
+     */
+    private boolean isPalindrome1(int x) {
+        // 特殊情况：
+        // 如上所述，当 x < 0 时，x 不是回文数。
+        // 同样地，如果数字的最后一位是 0，为了使该数字为回文，
+        // 则其第一位数字也应该是 0
+        // 只有 0 满足这一属性
+        if (x < 0 || (x % 10 == 0 && x > 0)) return false;
+
+        int revert = 0;
+        //当反正数大于原数时，说明已经反转到了原数的一半位置（原数偶数位，则两数相同，原数奇数位，则反转数大于原数）
+        while (x > revert) {
+            revert = revert * 10 + x % 10;
+            x = x / 10;
+        }
+
+        //反转结束后的判断：原数偶数位，则两数相同；原数奇数位，则反转数大于原数（去掉最后一位判断）
+        return x == revert || x == revert / 10;
+    }
+
+    private boolean isPalindrome2(int x) {
+        if (x < 0) return false;
+        if (x == 0 || x == 1) return true;
+        long temp = (long) x;
+
+        List<Integer> list = new ArrayList<Integer>();
+        while (temp >= 1) {
+            int end = x % 10;
+            list.add(end);
+            temp = temp / 10;
+            x = x / 10;
+        }
+        int size = list.size();
+        int count = size / 2;
+        for (int i = 0; i < count; i++) {
+            if (!list.get(i).equals(list.get(size - i - 1))) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 
