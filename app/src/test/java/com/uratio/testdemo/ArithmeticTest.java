@@ -747,6 +747,65 @@ public class ArithmeticTest {
         }
         return true;
     }
+
+    /**
+     * 1694. 重新格式化电话号码
+     * 给你一个字符串形式的电话号码 number 。number 由数字、空格 ' '、和破折号 '-' 组成。
+     *
+     * 请你按下述方式重新格式化电话号码。
+     *
+     * 首先，删除 所有的空格和破折号。
+     * 其次，将数组从左到右 每 3 个一组 分块，直到 剩下 4 个或更少数字。剩下的数字将按下述规定再分块：
+     * 2 个数字：单个含 2 个数字的块。
+     * 3 个数字：单个含 3 个数字的块。
+     * 4 个数字：两个分别含 2 个数字的块。
+     * 最后用破折号将这些块连接起来。注意，重新格式化过程中 不应该 生成仅含 1 个数字的块，并且 最多 生成两个含 2 个数字的块。
+     *
+     * 返回格式化后的电话号码。
+     */
+    @Test
+    public void reformatNumber() {
+//        String number = "1-23-45 6";
+        String number = "123 4-5678";
+        System.out.println("格式化号码为：" + reformatNumber1(number));
+    }
+
+    private String reformatNumber1(String number) {
+            String ns = number.replace("-", "").replace(" ", "");
+        int len = ns.length();
+
+        StringBuilder sb = new StringBuilder();
+//        for(int i=0; i<len; i+=3) {
+//            if(i % 3 == 2) {
+//                sb.append(ns.substring(i - 2, i + 1)).append("-");
+//            } else if(len - i == 4) {
+//                sb.append(ns.substring(i, i + 2)).append("-").append(ns.substring(i + 2));
+//                break;
+//            } else if(len - i <= 3) {
+//                sb.append(ns.substring(i));
+//                break;
+//            }
+//        }
+        int n = len;
+        int i = 0;
+        while(n > 0) {
+            if(n > 4) {
+                sb.append(ns.substring(i, i + 3)).append("-");
+                i += 3;
+                n -= 3;
+            } else {
+                if(len - i == 4) {
+                    sb.append(ns.substring(i, i + 2)).append("-").append(ns.substring(i + 2));
+                    break;
+                } else {
+                    sb.append(ns.substring(i));
+                    break;
+                }
+            }
+        }
+
+        return sb.toString();
+    }
 }
 
 class Automaton {
