@@ -821,6 +821,45 @@ public class ArithmeticTest {
         int a = n ^ (n >> 1);
         return (a & (a + 1)) == 0;
     }
+
+    /**
+     * 11. 盛最多水的容器
+     *
+     * 给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。
+     * 找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+     * 返回容器可以储存的最大水量。
+     *
+     * 说明：你不能倾斜容器。
+     */
+    @Test
+    public void maxArea() {
+        int[] height = new int[]{1,8,6,2,5,4,8,3,7};
+        System.out.println("储存的最大水量：" + maxArea(height));
+    }
+
+    private int maxArea(int[] height) {
+        int max = 0;
+        int n = height.length;
+        for(int i = 0; i < n; i++) {
+            int temp = 0;
+            for(int j = n - 1; j > i; j--) {
+                if( height[j] >= height[i]) {
+                    if(temp < (height[i] * (j - i))) {
+                        temp = height[i] * (j - i);
+                    }
+                    break;
+                } else {
+                    if(temp < (height[j] * (j - i))) {
+                        temp = height[j] * (j - i);
+                    }
+                }
+            }
+            if(max < temp) {
+                max = temp;
+            }
+        }
+        return max;
+    }
 }
 
 class Automaton {
